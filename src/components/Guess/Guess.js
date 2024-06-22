@@ -1,6 +1,5 @@
 import React from "react";
 import { range } from "../../utils";
-import { answer } from "../Game/Game";
 import { checkGuess } from "../../game-helpers";
 
 function Cell({ letter, status }) {
