@@ -3,8 +3,7 @@ import { range } from "../../utils";
 import { answer } from "../Game/Game";
 import { checkGuess } from "../../game-helpers";
 
-function Guess({ value }) {
-  // const answerValue = answer.answer;
+function Guess({ value, answer }) {
   const checkResult = checkGuess(value, answer);
 
   return (
