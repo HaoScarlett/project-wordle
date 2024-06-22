@@ -1,32 +1,40 @@
 import React from "react";
-import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import { range } from "../../utils";
+import { answer } from "../Game/Game";
+import { checkGuess } from "../../game-helpers";
 
-function Guess({ guesses }) {
-  // const cell = guesses.map((guess) =>
-  //   guess.split("").map((charOfGuess, index) => (
-  //     <span class="cell" key={index}>
-  //       {charOfGuess}
-  //     </span>
-  //   ))
-  // );
+function Guess({ value }) {
+  // const answerValue = answer.answer;
+  const checkResult = checkGuess(value, answer);
 
   return (
-    <div>
-      {range(NUM_OF_GUESSES_ALLOWED).map((rowIndex) => (
-        <p className="guess" key={rowIndex}>
-          {guesses[rowIndex]
-            ? guesses[rowIndex].split("").map((char, index) => (
-                <span className="cell" key={index}>
-                  {char}
-                </span>
-              ))
-            : range(5).map((cellIndex) => (
-                <span className="cell" key={cellIndex}></span>
-              ))}
-        </p>
-      ))}
-    </div>
+    <>
+      {/* <p className="guess">
+        {range(5).map((index) => (
+          <span className="cell" key={index}>
+            {value ? value[index] : undefined}
+          </span>
+        ))}
+      </p> */}
+      <p className="guess">
+        {checkResult
+          ? checkResult.map(({ letter, status }, index) => (
+              <span
+                className={`cell ${
+                  status === "correct"
+                    ? "correct"
+                    : status === "incorrect"
+                    ? "incorrect"
+                    : "misplaced"
+                }`}
+                key={index}
+              >
+                {letter}
+              </span>
+            ))
+          : range(5).map((index) => <span className="cell" key={index}></span>)}
+      </p>
+    </>
   );
 }
 
