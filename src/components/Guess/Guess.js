@@ -8,8 +8,8 @@ function Cell({ letter, status }) {
   return <span className={className}>{letter}</span>;
 }
 
-function Guess({ value, answer }) {
-  const checkResult = checkGuess(value, answer);
+function Guess({ value, answer, isWon }) {
+  const result = checkGuess(value, answer);
 
   return (
     <>
@@ -17,11 +17,19 @@ function Guess({ value, answer }) {
         {range(5).map((num) => (
           <Cell
             key={num}
-            letter={checkResult ? checkResult[num].letter : undefined}
-            status={checkResult ? checkResult[num].status : undefined}
+            letter={result ? result[num].letter : undefined}
+            status={result ? result[num].status : undefined}
           />
         ))}
       </p>
+      {isWon ? (
+        <div class="happy banner">
+          <p>
+            <strong>Congratulations!</strong> Got it in
+            <strong>3 guesses</strong>.
+          </p>
+        </div>
+      ) : null}
     </>
   );
 }

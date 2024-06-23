@@ -7,7 +7,12 @@ function GuessesList({ guesses, answer }) {
   return (
     <div className="guess-results">
       {range(NUM_OF_GUESSES_ALLOWED).map((rowIndex) => (
-        <Guess key={rowIndex} value={guesses[rowIndex]} answer={answer}/>
+        <Guess
+          key={rowIndex}
+          value={guesses[rowIndex]}
+          answer={answer}
+          isWon={() => (guesses[rowIndex] === answer ? true : false)}
+        />
       ))}
     </div>
   );
