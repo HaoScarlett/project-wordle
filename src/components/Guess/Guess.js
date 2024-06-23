@@ -8,7 +8,7 @@ function Cell({ letter, status }) {
   return <span className={className}>{letter}</span>;
 }
 
-function Guess({ value, answer, isWon }) {
+function Guess({ key, value, answer, isWon }) {
   const result = checkGuess(value, answer);
 
   return (
@@ -26,7 +26,7 @@ function Guess({ value, answer, isWon }) {
         <div class="happy banner">
           <p>
             <strong>Congratulations!</strong> Got it in
-            <strong>3 guesses</strong>.
+            <strong> {key} guesses</strong>.
           </p>
         </div>
       ) : null}
