@@ -11,7 +11,7 @@ function GuessesList({ guesses, answer }) {
           key={rowIndex}
           value={guesses[rowIndex]}
           answer={answer}
-          isWon={guesses[rowIndex] === answer} // pass a 
+          isWon={guesses[rowIndex] === answer} // pass a boolean instead of fn
         />
       ))}
     </div>
