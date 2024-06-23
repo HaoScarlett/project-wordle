@@ -14,7 +14,7 @@ function Game() {
   const [guesses, setGuesses] = React.useState([]);
 
   const isWon = guesses.includes(answer);
-  const isDisabled = guesses.length >= 6 ? "disabled" : null;
+  const isDisabled = guesses.length >= 6;
 
   function handleAddGuess(tentativeGuess) {
     setGuesses([...guesses, tentativeGuess]);

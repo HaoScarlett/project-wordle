@@ -26,7 +26,7 @@ function GuessInput({ handleAddGuess, isDisabled }) {
           const nextGuess = event.target.value.toUpperCase();
           setTentativeGuess(nextGuess);
         }}
-        isDisabled
+        disabled={isDisabled}
       />
     </form>
   );
