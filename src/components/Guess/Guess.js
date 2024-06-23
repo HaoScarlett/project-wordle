@@ -24,7 +24,7 @@ function Guess({ value, answer, isWon, numOfGuess }) {
         ))}
       </p>
       {isWon ? (
-        <div class="happy banner">
+        <div className="happy banner">
           <p>
             <strong>Congratulations!</strong> Got it in
             <strong> {numOfGuess} guesses</strong>.
@@ -32,9 +32,9 @@ function Guess({ value, answer, isWon, numOfGuess }) {
         </div>
       ) : null}
       {numOfGuess >= NUM_OF_GUESSES_ALLOWED ? (
-        <div class="sad banner">
+        <div className="sad banner">
           <p>
-            Sorry, the correct answer is <strong>LEARN</strong>.
+            Sorry, the correct answer is <strong>{answer}</strong>.
           </p>
         </div>
       ) : null}

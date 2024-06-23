@@ -3,8 +3,7 @@ import Guess from "../Guess/Guess";
 import { range } from "../../utils";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-function GuessesList({ guesses, answer }) {
-  const isWon = guesses.includes(answer);
+function GuessesList({ guesses, answer, isWon}) {
   return (
     <div className="guess-results">
       {range(NUM_OF_GUESSES_ALLOWED).map((rowIndex) => (
