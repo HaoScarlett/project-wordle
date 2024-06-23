@@ -1,6 +1,7 @@
 import React from "react";
 import { range } from "../../utils";
 import { checkGuess } from "../../game-helpers";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 function Cell({ letter, status }) {
   const className = status ? `cell ${status}` : "cell";
@@ -8,7 +9,7 @@ function Cell({ letter, status }) {
   return <span className={className}>{letter}</span>;
 }
 
-function Guess({ key, value, answer, isWon }) {
+function Guess({ value, answer, isWon, numOfGuess }) {
   const result = checkGuess(value, answer);
 
   return (
@@ -26,7 +27,14 @@ function Guess({ key, value, answer, isWon }) {
         <div class="happy banner">
           <p>
             <strong>Congratulations!</strong> Got it in
-            <strong> {key} guesses</strong>.
+            <strong> {numOfGuess} guesses</strong>.
+          </p>
+        </div>
+      ) : null}
+      {numOfGuess >= NUM_OF_GUESSES_ALLOWED ? (
+        <div class="sad banner">
+          <p>
+            Sorry, the correct answer is <strong>LEARN</strong>.
           </p>
         </div>
       ) : null}
