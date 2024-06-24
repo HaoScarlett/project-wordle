@@ -12,19 +12,31 @@ export const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  // set game status: running, won, lost
+  const [gameStatus, setGameStatus] = React.useState("running");
   const [guesses, setGuesses] = React.useState([]);
 
-  const isWon = guesses.includes(answer);
-  const isDisabled = guesses.length >= NUM_OF_GUESSES_ALLOWED; // boolean value
-
-  function handleAddGuess(tentativeGuess) {
-    setGuesses([...guesses, tentativeGuess]);
+  function handleSubmitGuess(tentativeGuess) {
+    const nextGuess = [...guesses, tentativeGuess];
+    setGuesses(nextGuess);
+    if (tentativeGuess.toUpperCase() === answer) {
+      setGameStatus("won");
+    } else if (nextGuess.length >= NUM_OF_GUESSES_ALLOWED) {
+      setGameStatus("lost");
+    }
   }
+  // const isWon = guesses.includes(answer);
+  // const isDisabled = guesses.length >= NUM_OF_GUESSES_ALLOWED;
 
   return (
     <>
-      <GuessesList guesses={guesses} answer={answer} isWon={isWon} />
-      <GuessInput handleAddGuess={handleAddGuess} isDisabled={isDisabled} />
+      <GuessesList guesses={guesses} answer={answer} />
+      {gameStatus === "won" && <WonBanner numOfGuesses={guesses.length} />}
+      {gameStatus === "lost" && <LostBanner answer={answer} />}
+      <GuessInput
+        handleSubmitGuess={handleSubmitGuess}
+        gameStatus={gameStatus}
+      />
     </>
   );
 }
