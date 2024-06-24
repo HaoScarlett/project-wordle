@@ -5,7 +5,8 @@ import { WORDS } from "../../data";
 import GuessInput from "../GuessInput/GuessInput";
 import GuessesList from "../GuessesList/GuessesList";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
-
+import LostBanner from "../LostBanner/LostBanner";
+import WonBanner from "../WonBanner/WonBanner";
 // Pick a random word on every pageload.
 export const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
